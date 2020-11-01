@@ -15,7 +15,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "nodemon",
-    "prod": "node srv/index.ts"
+    "prod": "node src/index.ts"
   },
   "dependencies": {
     "express": "^4.16.4",
