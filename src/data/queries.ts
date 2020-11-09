@@ -63,11 +63,11 @@ export default class Queries {
     }
 
     private static pool = mysql.createPool({
-        host: "birdie-test.cyosireearno.eu-west-2.rds.amazonaws.com",
-        port: 3306,
-        user: "test-read",
+        host: process.env.HOST,
+        port: parseInt(process.env.DB_PORT || '', 10),
+        user: process.env.DB_USER,
         // tslint:disable-next-line:object-literal-sort-keys
-        password: "xnxPp6QfZbCYkY8",
-        database: "birdietest"
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
     });
 }
