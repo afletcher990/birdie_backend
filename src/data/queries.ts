@@ -43,7 +43,8 @@ export default class Queries {
 
     public static async getDailyEvents(date: string, careRecipientId: string) {
         const results = await Queries.pool.query(`SELECT visit_id, caregiver_id, timestamp, event_type, payload FROM events WHERE 
-            DATE(timestamp)='${date}' AND care_recipient_id='${careRecipientId}' ORDER BY timestamp`);
+            DATE(timestamp)=? AND care_recipient_id=? ORDER BY timestamp`, [
+                date,careRecipientId]);
         const res = results[0] as [];
         res.forEach(item => {
             (item as any).caregiver_name = FakeData.caregiversMap.get((item as any).caregiver_id);
